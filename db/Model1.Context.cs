@@ -13,10 +13,10 @@ namespace demo.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class basyuni_demoEntities0 : DbContext
+    public partial class basyuni_demoEntities1 : DbContext
     {
-        public basyuni_demoEntities0()
-            : base("name=basyuni_demoEntities0")
+        public basyuni_demoEntities1()
+            : base("name=basyuni_demoEntities1")
         {
         }
     
@@ -26,6 +26,7 @@ namespace demo.db
         }
     
         public DbSet<Delivery_adress> Delivery_adress { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Orders_clients> Orders_clients { get; set; }
         public DbSet<Orders_status> Orders_status { get; set; }
         public DbSet<Product_category> Product_category { get; set; }
@@ -36,6 +37,5 @@ namespace demo.db
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Users_roles> Users_roles { get; set; }
-        public DbSet<Order> Orders { get; set; }
     }
 }

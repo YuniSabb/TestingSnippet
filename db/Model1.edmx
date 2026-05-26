@@ -12,19 +12,9 @@
           <Property Name="id_adress" Type="int" Nullable="false" />
           <Property Name="adress" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'basyuni_demo.dbo.Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Orders">
           <Key>
-            <PropertyRef Name="order_id" />
             <PropertyRef Name="order_number_id" />
-            <PropertyRef Name="articule" />
-            <PropertyRef Name="amount" />
-            <PropertyRef Name="order_date" />
-            <PropertyRef Name="delivery_date" />
-            <PropertyRef Name="delivery_point" />
-            <PropertyRef Name="code" />
-            <PropertyRef Name="id_status" />
           </Key>
           <Property Name="order_id" Type="int" Nullable="false" />
           <Property Name="order_number_id" Type="int" Nullable="false" />
@@ -225,6 +215,7 @@ warning 6035: The relationship 'FK_Orders_Products' has columns that are not par
         </Association>
         <EntityContainer Name="basyuni_demoModelStoreContainer">
           <EntitySet Name="Delivery_adress" EntityType="Self.Delivery_adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders_clients" EntityType="Self.Orders_clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders_status" EntityType="Self.Orders_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_category" EntityType="Self.Product_category" Schema="dbo" store:Type="Tables" />
@@ -235,20 +226,6 @@ warning 6035: The relationship 'FK_Orders_Products' has columns that are not par
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_roles" EntityType="Self.Users_roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Orders].[order_id] AS [order_id], 
-[Orders].[order_number_id] AS [order_number_id], 
-[Orders].[articule] AS [articule], 
-[Orders].[amount] AS [amount], 
-[Orders].[order_date] AS [order_date], 
-[Orders].[delivery_date] AS [delivery_date], 
-[Orders].[delivery_point] AS [delivery_point], 
-[Orders].[id_client_name] AS [id_client_name], 
-[Orders].[code] AS [code], 
-[Orders].[id_status] AS [id_status]
-FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Orders_Delivery_adress" Association="Self.FK_Orders_Delivery_adress">
             <End Role="Delivery_adress" EntitySet="Delivery_adress" />
             <End Role="Orders" EntitySet="Orders" />
@@ -294,6 +271,24 @@ FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
           <Property Name="id_adress" Type="Int32" Nullable="false" />
           <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Delivery_adress" FromRole="Delivery_adress" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="order_number_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="order_number_id" Type="Int32" Nullable="false" />
+          <Property Name="articule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="delivery_point" Type="Int32" Nullable="false" />
+          <Property Name="id_client_name" Type="Int32" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="id_status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Delivery_adress" Relationship="Self.FK_Orders_Delivery_adress" FromRole="Orders" ToRole="Delivery_adress" />
+          <NavigationProperty Name="Orders_clients" Relationship="Self.FK_Orders_Orders_clients" FromRole="Orders" ToRole="Orders_clients" />
+          <NavigationProperty Name="Orders_status" Relationship="Self.FK_Orders_Orders_status" FromRole="Orders" ToRole="Orders_status" />
         </EntityType>
         <EntityType Name="Orders_clients">
           <Key>
@@ -394,32 +389,6 @@ FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
           <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Users_roles" FromRole="Users_roles" ToRole="Users" />
         </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="order_id" />
-            <PropertyRef Name="order_number_id" />
-            <PropertyRef Name="articule" />
-            <PropertyRef Name="amount" />
-            <PropertyRef Name="order_date" />
-            <PropertyRef Name="delivery_date" />
-            <PropertyRef Name="delivery_point" />
-            <PropertyRef Name="code" />
-            <PropertyRef Name="id_status" />
-          </Key>
-          <Property Name="order_id" Type="Int32" Nullable="false" />
-          <Property Name="order_number_id" Type="Int32" Nullable="false" />
-          <Property Name="articule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="amount" Type="Int32" Nullable="false" />
-          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="delivery_point" Type="Int32" Nullable="false" />
-          <Property Name="id_client_name" Type="Int32" />
-          <Property Name="code" Type="Int32" Nullable="false" />
-          <Property Name="id_status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Delivery_adress" Relationship="Self.FK_Orders_Delivery_adress" FromRole="Orders" ToRole="Delivery_adress" />
-          <NavigationProperty Name="Orders_clients" Relationship="Self.FK_Orders_Orders_clients" FromRole="Orders" ToRole="Orders_clients" />
-          <NavigationProperty Name="Orders_status" Relationship="Self.FK_Orders_Orders_status" FromRole="Orders" ToRole="Orders_status" />
-        </EntityType>
         <Association Name="FK_Orders_Delivery_adress">
           <End Role="Delivery_adress" Type="Self.Delivery_adress" Multiplicity="1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
@@ -516,8 +485,9 @@ FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="basyuni_demoEntities0" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="basyuni_demoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Delivery_adress" EntityType="Self.Delivery_adress" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Orders_clients" EntityType="Self.Orders_clients" />
           <EntitySet Name="Orders_status" EntityType="Self.Orders_status" />
           <EntitySet Name="Product_category" EntityType="Self.Product_category" />
@@ -528,7 +498,6 @@ FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Users_roles" EntityType="Self.Users_roles" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
           <AssociationSet Name="FK_Orders_Delivery_adress" Association="Self.FK_Orders_Delivery_adress">
             <End Role="Delivery_adress" EntitySet="Delivery_adress" />
             <End Role="Orders" EntitySet="Orders" />
@@ -567,12 +536,28 @@ FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="basyuni_demoModelStoreContainer" CdmEntityContainer="basyuni_demoEntities0">
+        <EntityContainerMapping StorageEntityContainer="basyuni_demoModelStoreContainer" CdmEntityContainer="basyuni_demoEntities1">
           <EntitySetMapping Name="Delivery_adress">
             <EntityTypeMapping TypeName="basyuni_demoModel.Delivery_adress">
               <MappingFragment StoreEntitySet="Delivery_adress">
                 <ScalarProperty Name="id_adress" ColumnName="id_adress" />
                 <ScalarProperty Name="adress" ColumnName="adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="basyuni_demoModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="order_number_id" ColumnName="order_number_id" />
+                <ScalarProperty Name="articule" ColumnName="articule" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="delivery_point" ColumnName="delivery_point" />
+                <ScalarProperty Name="id_client_name" ColumnName="id_client_name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -670,22 +655,6 @@ FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
               <MappingFragment StoreEntitySet="Users_roles">
                 <ScalarProperty Name="id_role" ColumnName="id_role" />
                 <ScalarProperty Name="role_name" ColumnName="role_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="basyuni_demoModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="order_number_id" ColumnName="order_number_id" />
-                <ScalarProperty Name="articule" ColumnName="articule" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="order_date" ColumnName="order_date" />
-                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
-                <ScalarProperty Name="delivery_point" ColumnName="delivery_point" />
-                <ScalarProperty Name="id_client_name" ColumnName="id_client_name" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="id_status" ColumnName="id_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

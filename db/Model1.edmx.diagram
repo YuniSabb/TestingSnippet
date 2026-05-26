@@ -4,8 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a7494111ff3e477b93e8a5f0d3474efa" Name="Diagram1">
+      <Diagram DiagramId="94d08670317e4988a0b9f6cfdfe9b4b0" Name="Diagram1">
         <EntityTypeShape EntityType="basyuni_demoModel.Delivery_adress" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Order" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="basyuni_demoModel.Orders_clients" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="basyuni_demoModel.Orders_status" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="basyuni_demoModel.Product_category" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
@@ -16,7 +17,6 @@
         <EntityTypeShape EntityType="basyuni_demoModel.sysdiagram" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="basyuni_demoModel.User" Width="1.5" PointX="10" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="basyuni_demoModel.Users_roles" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="basyuni_demoModel.Order" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="basyuni_demoModel.FK_Orders_Delivery_adress" ManuallyRouted="false" />
         <AssociationConnector Association="basyuni_demoModel.FK_Orders_Orders_clients" ManuallyRouted="false" />
         <AssociationConnector Association="basyuni_demoModel.FK_Orders_Orders_status" ManuallyRouted="false" />

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ProductEditWindow.xaml</Title>
+      <SnippetTypes><SnippetType>Expansion</SnippetType></SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="xml"><![CDATA[<Window x:Class="demo.ProductEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Товар" Height="520" Width="420"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <ScrollViewer Margin="12">
+        <StackPanel>
+            <TextBlock x:Name="IdLabel" Text="ID" Margin="0,0,0,4"/>
+            <TextBox x:Name="IdBox" IsReadOnly="True" Margin="0,0,0,8"/>
+            <TextBlock Text="Наименование (справочник)" Margin="0,0,0,4"/>
+            <ComboBox x:Name="NameCombo" Margin="0,0,0,8"/>
+            <TextBlock Text="Артикул" Margin="0,0,0,4"/>
+            <TextBox x:Name="ArticuleBox" Margin="0,0,0,8"/>
+            <TextBlock Text="Категория" Margin="0,0,0,4"/>
+            <ComboBox x:Name="CatCombo" Margin="0,0,0,8"/>
+            <TextBlock Text="Производитель" Margin="0,0,0,4"/>
+            <ComboBox x:Name="ProdCombo" Margin="0,0,0,8"/>
+            <TextBlock Text="Поставщик" Margin="0,0,0,4"/>
+            <ComboBox x:Name="DelCombo" Margin="0,0,0,8"/>
+            <TextBlock Text="Описание" Margin="0,0,0,4"/>
+            <TextBox x:Name="DescBox" Height="50" TextWrapping="Wrap" Margin="0,0,0,8"/>
+            <TextBlock Text="Цена" Margin="0,0,0,4"/>
+            <TextBox x:Name="PriceBox" Margin="0,0,0,8"/>
+            <TextBlock Text="Ед. изм." Margin="0,0,0,4"/>
+            <TextBox x:Name="UnitBox" Margin="0,0,0,8"/>
+            <TextBlock Text="На складе" Margin="0,0,0,4"/>
+            <TextBox x:Name="StockBox" Margin="0,0,0,8"/>
+            <TextBlock Text="Скидка %" Margin="0,0,0,4"/>
+            <TextBox x:Name="SaleBox" Margin="0,0,0,8"/>
+            <Image x:Name="Preview" Height="80" Margin="0,0,0,8"/>
+            <Button Content="Выбрать фото" Click="PickImage_Click" Margin="0,0,0,12"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Сохранить" IsDefault="True" Click="Save_Click" Margin="0,0,8,0"/>
+                <Button Content="Отмена" IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
