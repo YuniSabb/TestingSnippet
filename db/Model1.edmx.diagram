@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7494111ff3e477b93e8a5f0d3474efa" Name="Diagram1">
+        <EntityTypeShape EntityType="basyuni_demoModel.Delivery_adress" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Orders_clients" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Orders_status" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Product_category" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Product_delivery" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Product_name" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Product_producer" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.sysdiagram" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.User" Width="1.5" PointX="10" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Users_roles" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="basyuni_demoModel.Order" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Orders_Delivery_adress" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Orders_Orders_clients" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Orders_Orders_status" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Products_Product_category" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Products_Product_delivery" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Products_Product_name" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Products_Product_producer" ManuallyRouted="false" />
+        <AssociationConnector Association="basyuni_demoModel.FK_Users_Users_roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
